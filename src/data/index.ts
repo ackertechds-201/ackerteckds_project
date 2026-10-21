@@ -5,8 +5,8 @@
 
 export const COMPANY = {
   name: "Acker Tech DS",
-  /** Fichier dans `public/` — ex. `public/image/logo.png` → `/image/logo.png` */
-  logo: "/image/logo.png",
+  /** Fichier dans `public/` — ex. `public/image/logo.webp` → `/image/logo.webp` */
+  logo: "/image/logo.webp",
   /** Sous-titre affiché dans le header (identité courte) */
   brandSubtitle: "Digital Solutions",
   tagline: "Dépannage informatique & services logiciels à Antsiranana",

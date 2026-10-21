@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { SERVICES } from "@/data";
 import { useInView } from "@/hooks/useInView";
@@ -36,9 +37,13 @@ export default function ServicesPageContent() {
           {webService ? (
             <article className="relative overflow-hidden bg-primary-container text-white md:grid md:grid-cols-2" aria-labelledby="web-service-title">
               <div className="relative min-h-72 md:min-h-full">
-                <img
+                <Image
                   src={IMAGES[webService.id]}
                   alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                  quality={75}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-primary-container/35" />
@@ -74,9 +79,12 @@ export default function ServicesPageContent() {
               {otherServices.map((service) => (
                 <article key={service.id} className="group">
                   <div className="relative h-64 overflow-hidden bg-primary-container">
-                    <img
+                    <Image
                       src={IMAGES[service.id]}
                       alt=""
+                      fill
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      quality={70}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary-container/30" />

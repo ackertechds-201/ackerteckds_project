@@ -1597,7 +1597,7 @@ body {
 /* ============================================ */
 
 /* Ensure logo images are never clipped */
-img[src*="ackertechpdp.png"] {
+img[src*="logo.webp"] {
   min-width: auto !important;
   max-width: none !important;
   object-fit: contain !important;

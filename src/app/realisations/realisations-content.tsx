@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import SectionCTA from "@/components/SectionCTA";
 import { useInView } from "@/hooks/useInView";
@@ -28,7 +29,7 @@ const realisations: Realisation[] = [
     service: "Création de site web",
     result: "Site responsive mis en ligne",
     date: "Octobre 2026",
-    image: "/images/realisation-acker-tech.png",
+    image: "/images/realisation-acker-tech.webp",
     imageAlt: "Aperçu du site Acker Tech",
     url: "https://ackertechds-official.vercel.app/",
   },
@@ -40,7 +41,7 @@ const realisations: Realisation[] = [
     service: "Création de site web",
     result: "Expérience responsive avec réservation",
     date: "Octobre 2026",
-    image: "/images/realisation-hotel-baie-dor.png",
+    image: "/images/realisation-hotel-baie-dor.webp",
     imageAlt: "Aperçu du site Hôtel de la Baie",
     url: "https://hoteldelabai.vercel.app/",
   },
@@ -52,7 +53,7 @@ const realisations: Realisation[] = [
     service: "Application web",
     result: "Création de CV, recherche d’emploi et suivi centralisé",
     date: "Octobre 2026",
-    image: "/images/realisation-smart-cv.png",
+    image: "/images/realisation-smart-cv.webp",
     imageAlt: "Aperçu de la plateforme Welcome Talent Smart CV",
     status: "En cours de développement",
   },
@@ -64,7 +65,7 @@ const realisations: Realisation[] = [
     service: "Site e-commerce",
     result: "Expérience d’achat complète et gestion de catalogue",
     date: "Octobre 2026",
-    image: "/images/realisation-nexora-tech.png",
+    image: "/images/realisation-nexora-tech.webp",
     imageAlt: "Aperçu de la boutique e-commerce Nexora Tech",
     status: "En cours de développement",
   },
@@ -180,9 +181,12 @@ export default function RealisationsPageContent() {
               {filteredRealisations.map((r) => (
                 <article key={r.id} className="group">
                   <div className="relative h-52 overflow-hidden bg-primary-container">
-                    <img
+                    <Image
                       src={r.image}
                       alt={r.imageAlt ?? ""}
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                      quality={70}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary-container/25" />

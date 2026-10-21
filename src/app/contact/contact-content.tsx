@@ -1,6 +1,7 @@
 "use client";
 
 import { COMPANY } from "@/data";
+import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 
@@ -34,8 +35,11 @@ export default function ContactPageContent() {
                 rel="noopener noreferrer"
                 className="block relative h-64 overflow-hidden"
               >
-                <img
+                <Image
                   alt="Antsiranana"
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 42vw"
+                  quality={70}
                   className="h-full w-full object-cover"
                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=80"
                 />

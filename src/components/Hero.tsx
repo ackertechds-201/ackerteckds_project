@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2400&q=80";
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=70";
 
 const STATS = [
   { value: "5", label: "Métiers" },
@@ -18,9 +19,13 @@ export default function Hero() {
       className="relative min-h-[100svh] flex items-end overflow-hidden"
       aria-label="Accueil — artisanat digital"
     >
-      <img
+      <Image
         src={HERO_IMAGE}
         alt=""
+        fill
+        priority
+        sizes="100vw"
+        quality={75}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/55 to-primary-container/25" />

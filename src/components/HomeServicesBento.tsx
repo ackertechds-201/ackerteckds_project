@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const FILTERS = ["Tous", "Android", "Système", "Web", "Documents"] as const;
@@ -127,9 +128,12 @@ export default function HomeServicesBento() {
             <Link key={item.id} href={item.href} className="group block">
               <article className="overflow-hidden">
                 <div className="relative h-56 overflow-hidden">
-                  <img
+                  <Image
                     src={item.image}
                     alt=""
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                    quality={70}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-primary-container/25" />
