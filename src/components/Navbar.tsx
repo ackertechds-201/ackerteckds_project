@@ -66,20 +66,20 @@ export default function Navbar() {
           : "bg-surface/90 backdrop-blur-xl border-b border-outline-variant shadow-sm shadow-black/[0.04]"
       }`}
     >
-      <div className="flex items-center justify-between gap-3 h-16 sm:h-20 px-margin-mobile lg:px-8 xl:px-margin-desktop max-w-max-width mx-auto">
+      <div className="flex h-14 items-center justify-between gap-2 px-3 min-[375px]:px-margin-mobile sm:h-20 lg:px-8 xl:px-margin-desktop max-w-max-width mx-auto">
         <Link
           href="/"
-          className={`flex items-center gap-2 sm:gap-3 min-w-0 shrink-0 transition-opacity hover:opacity-80 ${
+          className={`flex min-w-0 flex-1 items-center gap-2 sm:flex-none sm:gap-3 transition-opacity hover:opacity-80 ${
             transparent ? "text-white" : "text-on-surface"
           }`}
         >
-          <BrandLogo size={36} className="flex-shrink-0" src={COMPANY.logo} />
-          <span className="font-serif tracking-[0.18em] sm:tracking-[0.28em] uppercase text-[12px] sm:text-[13px] truncate max-w-[7.5rem] sm:max-w-none">
+          <BrandLogo size={32} className="flex-shrink-0 sm:!h-9 sm:!w-9" src={COMPANY.logo} />
+          <span className="hidden min-w-0 max-w-[7rem] truncate font-serif text-[11px] uppercase tracking-[0.14em] min-[360px]:block sm:max-w-none sm:text-[13px] sm:tracking-[0.28em]">
             Acker Tech
           </span>
         </Link>
 
-        <div className="hidden lg:flex flex-1 items-center justify-center gap-3 xl:gap-7 min-w-0 px-2">
+        <div className="hidden xl:flex flex-1 items-center justify-center gap-4 min-w-0 px-4">
           {menuLinks.map((link) => (
             <Link key={link.href} href={link.href} className={desktopLinkClass(link.href)}>
               {link.label}
@@ -87,17 +87,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="relative z-20 flex items-center justify-end gap-1.5 sm:gap-2 shrink-0">
+        <div className="relative z-20 flex shrink-0 items-center justify-end gap-1 sm:gap-2">
           <ThemeToggle inverted={transparent} />
           <Link
             href="/contact"
-            className="hidden sm:inline-flex lux-pill bg-tertiary-fixed text-on-tertiary-fixed hover:opacity-90 px-4 xl:px-5 py-2 text-[10px]"
+            className="hidden md:inline-flex lux-pill bg-tertiary-fixed text-on-tertiary-fixed hover:opacity-90 px-4 xl:px-5 py-2 text-[10px]"
           >
             Contact
           </Link>
           <button
             type="button"
-            className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full ${
+            className={`xl:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors ${
               transparent ? "text-white" : "text-on-surface"
             }`}
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -113,16 +113,19 @@ export default function Navbar() {
       {open ? (
         <div
           id="mobile-nav"
-          className="lg:hidden absolute inset-x-0 top-full z-40 flex h-[calc(100dvh-4rem)] sm:h-[calc(100dvh-5rem)] flex-col overflow-y-auto overscroll-contain bg-primary-container text-white"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu de navigation"
+          className="xl:hidden absolute inset-x-0 top-full z-40 flex h-[calc(100dvh-3.5rem)] flex-col overflow-y-auto overscroll-contain bg-primary-container text-white sm:h-[calc(100dvh-5rem)]"
         >
-          <div className="flex flex-col px-margin-mobile py-6 sm:py-8 max-w-max-width mx-auto w-full">
+          <div className="flex w-full max-w-max-width flex-col px-5 py-5 min-[375px]:px-margin-mobile sm:py-8 mx-auto">
             {menuLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center min-h-12 py-3 font-serif text-2xl sm:text-3xl border-b border-white/10 ${
+                  className={`flex min-h-12 items-center py-3 font-serif text-2xl border-b border-white/10 transition-colors sm:text-3xl ${
                     isActive ? "text-white" : "text-white/75 hover:text-white"
                   }`}
                 >
@@ -132,7 +135,7 @@ export default function Navbar() {
             })}
             <Link
               href="/contact"
-              className="inline-flex lux-pill bg-tertiary-fixed text-on-tertiary-fixed mt-6 w-fit px-6 py-3"
+              className="mt-6 inline-flex w-full lux-pill bg-tertiary-fixed px-6 py-3 text-on-tertiary-fixed sm:w-fit"
             >
               Prendre contact
             </Link>
